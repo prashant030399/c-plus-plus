@@ -1,0 +1,31 @@
+<?php
+ if(isset($_GET['t1']))
+ {
+    $r=$_GET['t1'];
+    $n=$_GET['t2'];
+    $m=$_GET['t3'];
+    $con=mysqli_connect('localhost','root','seedit','samepageeditdelete');
+    $q= "insert into info values('$r','$n','$m') ";
+    $res=mysqli_query($con,$q);
+    if($res==true)
+    {
+        echo" Data saved successfull <br> ";
+        $q="select * from info ";
+        $res=mysqli_query($con,$q);
+        echo" <div class='container'> ";
+        echo " <table>  ";
+        echo"  <tr> <td>rno</td>  <td>name</td>  <td>marks</td>    </tr>   ";
+        while($row=mysqli_fetch_array($res))
+        {
+            echo "    <tr>     <td>".$row['rno']."</td>    <td>".$row['name']."</td><td>".$row['marks']."</td>     </tr>     ";
+        }
+        }
+           echo" </table>";
+          echo"  </div> ";
+    }
+        else 
+        {
+            echo"error";
+        }
+    
+?>

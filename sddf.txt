@@ -1,0 +1,7 @@
+$q="  select * from addstudent where rno='$a' ";
+$res= mysqli_query($con,$q);
+if($res==true)
+{
+    echo  "already exists";
+}
+else 
